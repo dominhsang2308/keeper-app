@@ -1,25 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import Note from './components/Note/Note'
+import note from './note'
+import Login from './components/Login/Login';
+
+var isLoggedIn = true
+
+function conditionRender(){
+  if(isLoggedIn){
+    return(
+      <div>
+      <Header />
+      {note.map((noteItem) => {
+        return (
+          <Note
+            key={noteItem.key}
+            title={noteItem.title}
+            content={noteItem.content}
+          />
+
+        )
+      })}
+      <Footer />
+    </div>
+    )
+  }
+  else{
+    return <Login />
+  }
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div className=''>{conditionRender()}</div>
+  )
 }
 
 export default App;
