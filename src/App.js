@@ -6,7 +6,8 @@ import Note from './components/Note/Note'
 import note from './note'
 import Login from './components/Login/Login';
 
-var isLoggedIn = true
+var isLoggedIn = false
+var unRegister = false
 
 function conditionRender(){
   if(isLoggedIn){
@@ -28,7 +29,9 @@ function conditionRender(){
     )
   }
   else{
-    return <Login />
+    return <Login 
+    unRegister = {unRegister}
+    />
   }
 }
 
